@@ -1,0 +1,14 @@
+// Variables Sass : utilisées à la compilation, elles ne produisent aucun CSS.
+// Import dans un composant : @use "../styles/variables" as *;
+
+// Paliers (mobile-first : les styles de base visent le mobile)
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+
+// Mixin de palier : @include from($bp-tablet) { … }
+// produit @media (min-width: 768px) { … }
+@mixin from($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
