@@ -1,6 +1,7 @@
 ---
 // Gabarit commun à toutes les pages : <head>, police, styles globaux.
 import "../styles/global.scss";
+import Header from "../components/Header.astro";
 
 interface Props {
   title: string;
@@ -26,7 +27,6 @@ const { title, description } = Astro.props;
       let theme = null;
       try {
         theme = localStorage.getItem("theme");
-        console.log("thème: " + theme);
       } catch {}
       const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)",
@@ -45,6 +45,9 @@ const { title, description } = Astro.props;
     />
   </head>
   <body>
-    <slot />
+    <Header />
+    <main id="contenu" tabindex="-1">
+      <slot />
+    </main>
   </body>
 </html>
