@@ -20,6 +20,22 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
 
+    <!-- Thème : avant les feuilles de style, pour s'exécuter sans attendre -->
+    <script is:inline>
+      // Avant l'affichage : applique le thème enregistré, sinon celui du système.
+      let theme = null;
+      try {
+        theme = localStorage.getItem("theme");
+        console.log("thème: " + theme);
+      } catch {}
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      if (theme === "dark" || (!theme && prefersDark)) {
+        document.documentElement.classList.add("dark-theme");
+      }
+    </script>
+
     <!-- Noto Serif Display : axes italique, largeur et graisse -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
