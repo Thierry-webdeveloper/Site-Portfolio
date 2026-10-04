@@ -119,6 +119,63 @@ const liens = [
   </nav>
 </header>
 
+<script>
+  // --- Bouton de thème ---
+  const root = document.documentElement;
+  const themeBtn = document.querySelector<HTMLButtonElement>(".theme-toggle");
+
+  if (themeBtn) {
+    // Aligne aria-pressed sur le thème réellement affiché
+    const syncThemeBtn = () => {
+      themeBtn.setAttribute(
+        "aria-pressed",
+        String(root.classList.contains("dark-theme")),
+      );
+    };
+    syncThemeBtn();
+
+    themeBtn.addEventListener("click", () => {
+      const isDark = root.classList.toggle("dark-theme");
+      try {
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      } catch {
+        // localStorage indisponible : le thème vaut pour cette visite seulement
+      }
+      syncThemeBtn();
+    });
+  }
+
+  // --- Menu mobile ---
+  const menuBtn = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const menu = document.getElementById("menu");
+
+  if (menuBtn && menu) {
+    const isMenuOpen = () => menuBtn.getAttribute("aria-expanded") === "true";
+
+    const setMenu = (open: boolean) => {
+      menuBtn.setAttribute("aria-expanded", String(open));
+    };
+
+    // Ouvre ou ferme au clic sur le bouton
+    menuBtn.addEventListener("click", () => setMenu(!isMenuOpen()));
+
+    // Ferme au clic sur un lien (le navigateur suit l'ancre)
+    menu.addEventListener("click", (event) => {
+      if (event.target instanceof Element && event.target.closest("a")) {
+        setMenu(false);
+      }
+    });
+
+    // Ferme avec Échap et rend le focus au bouton
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && isMenuOpen()) {
+        setMenu(false);
+        menuBtn.focus();
+      }
+    });
+  }
+</script>
+
 <style lang="scss">
   @use "../styles/variables" as *;
 
