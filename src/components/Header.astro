@@ -1,4 +1,6 @@
 ---
+import SocialLinks from "./SocialLinks.astro";
+
 // En-tête commun : identité (retour en haut), bouton de thème, menu.
 const liens = [
   { href: "/#accueil", label: "Accueil" },
@@ -116,6 +118,9 @@ const liens = [
         ))
       }
     </ul>
+    <div class="nav-social">
+      <SocialLinks />
+    </div>
   </nav>
 </header>
 
@@ -314,6 +319,10 @@ const liens = [
       font-size: 1.25rem;
       text-decoration: none;
     }
+  }
+
+  .nav-social {
+    padding-block: var(--space-4);
   }
 
   .site-header:has(.menu-toggle[aria-expanded="true"]) .site-nav {
