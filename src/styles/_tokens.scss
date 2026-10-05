@@ -50,6 +50,16 @@
   --header-height: 56px;
   --sidebar-width: 75px;
   --page-gutter: var(--space-3); // marge latérale : 16 px sur mobile
+
+  // Portrait
+  --shadow-portrait:
+    0 25px 50px -12px rgba(0, 0, 0, 0.2),
+    0 12px 24px -8px rgba(0, 0, 0, 0.12),
+    inset 0 0 20px rgba(0, 0, 0, 0.08);
+  --shadow-portrait-hover:
+    0 35px 60px -15px rgba(0, 0, 0, 0.28),
+    0 20px 30px -10px rgba(0, 0, 0, 0.18),
+    inset 0 0 15px rgba(0, 0, 0, 0.05);
 }
 
 // Thème sombre : seules les valeurs qui changent sont redéfinies

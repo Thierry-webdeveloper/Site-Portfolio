@@ -56,3 +56,186 @@ import portrait from "../assets/portrait.webp";
     </svg>
   </a>
 </section>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  // --- Mobile et tablette : éléments empilés ---
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-block: var(--space-5);
+  }
+
+  .hero__tagline-title,
+  .hero__tagline-subtitle,
+  .hero__title,
+  .hero__name,
+  .hero__role {
+    font-family: var(--font-serif-condensed);
+    font-stretch: var(--serif-width);
+  }
+
+  .hero__tagline-title {
+    margin-bottom: var(--space-2);
+    font-size: clamp(2rem, 2.9vw, 3.2rem);
+    font-style: italic;
+    line-height: 1.1;
+  }
+
+  .hero__tagline-subtitle {
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-style: italic;
+    line-height: 1.2;
+    opacity: 0.8;
+  }
+
+  // « Portfolio » : « Port » droit, « folio » italique et décalé
+  .hero__title {
+    max-width: none;
+    padding-bottom: 0.45em; // place du décalage de « folio »
+    font-size: clamp(3.5rem, 15vw, 20rem);
+    font-weight: 400;
+    line-height: 0.85;
+    white-space: nowrap;
+  }
+
+  .hero__title-roman,
+  .hero__title-italic {
+    display: inline-block;
+  }
+
+  .hero__title-italic {
+    margin-left: -0.2em; // rapproche « f » de « t »
+    font-style: italic;
+    transform: translateY(0.53em);
+  }
+
+  // Portrait : ovale 4/5 avec ombre
+  .hero__picture {
+    width: 220px;
+    aspect-ratio: 4 / 5;
+    margin-inline: auto;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-round);
+    box-shadow: var(--shadow-portrait);
+  }
+
+  // L'<img> est produite par le composant Image : :global() pour l'atteindre
+  .hero__picture :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform var(--duration-slow) ease;
+  }
+
+  .hero__picture:hover :global(img) {
+    transform: scale(1.05);
+  }
+
+  .hero__name {
+    margin-bottom: var(--space-1);
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    font-weight: 700;
+  }
+
+  .hero__role {
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    font-style: italic;
+    line-height: 1.3;
+    opacity: 0.85;
+  }
+
+  // Flèche vers les projets
+  .hero__arrow {
+    display: flex;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 44px;
+    border: 1px solid var(--btn-border);
+    border-radius: var(--radius-pill);
+    background-color: var(--sidebar-bg);
+    color: inherit;
+    transition:
+      background-color var(--duration-base) ease,
+      color var(--duration-base) ease;
+
+    svg {
+      transition: transform var(--duration-base) ease;
+    }
+
+    &:hover {
+      background-color: var(--btn-hover-bg);
+      color: var(--btn-hover-text);
+
+      svg {
+        transform: translateX(15px);
+      }
+    }
+  }
+
+  // --- Desktop : composition en grille de la maquette ---
+  @include from($bp-desktop) {
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 400px);
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+        ". tagline"
+        "title picture"
+        "profile arrow";
+      gap: 0;
+      min-height: calc(100vh - var(--header-height));
+    }
+
+    .hero__tagline {
+      grid-area: tagline;
+      justify-self: end;
+      max-width: 20rem;
+      text-align: right;
+    }
+
+    // Décalages de composition repris tels quels de la maquette
+    .hero__title {
+      grid-area: title;
+      align-self: start;
+      transform: translate(110px, -50px);
+    }
+
+    .hero__picture {
+      z-index: 2;
+      grid-area: picture;
+      align-self: end;
+      width: 100%;
+      max-width: 400px;
+      margin-inline: auto 0;
+      transform: translate(-150px, 90px);
+      transition:
+        transform var(--duration-slow) cubic-bezier(0.165, 0.84, 0.44, 1),
+        box-shadow var(--duration-slow) ease;
+
+      &:hover {
+        transform: translate(-150px, 75px); // se soulève de 15 px
+        box-shadow: var(--shadow-portrait-hover);
+      }
+    }
+
+    .hero__profile {
+      grid-area: profile;
+      align-self: end;
+      max-width: 28rem;
+      padding-top: var(--space-6);
+    }
+
+    .hero__arrow {
+      grid-area: arrow;
+      align-self: end;
+      justify-self: end;
+    }
+  }
+</style>
