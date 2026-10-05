@@ -1,0 +1,54 @@
+---
+// Section « À propos » : version écrite du pitch (validée le 05/10).
+---
+
+<section id="a-propos" class="about" aria-labelledby="a-propos-titre">
+  <h2 id="a-propos-titre">À propos</h2>
+
+  <div class="about__text">
+    <p>
+      Je suis intégrateur web front-end. Je conçois des sites rapides,
+      accessibles et bien référencés&nbsp;: une expérience claire pour les
+      visiteurs, une meilleure visibilité pour les professionnels.
+    </p>
+    <p>
+      Pendant 37&nbsp;ans, j’ai travaillé dans le négoce de matériaux, au
+      contact quotidien des artisans du bâtiment. Je programme en autodidacte
+      depuis 1985&nbsp;; j’ai choisi d’en faire mon métier et suivi la formation
+      Intégrateur Web d’OpenClassrooms pour structurer cette pratique.
+    </p>
+    <p>
+      Mon expérience de terrain m’aide à comprendre les besoins concrets d’un
+      professionnel&nbsp;; la formation m’a donné la méthode pour y
+      répondre&nbsp;: comprendre avant de développer, tester avant de valider,
+      et expliquer mes choix pour avancer avec le client en véritable
+      partenaire.
+    </p>
+    <p>
+      Aujourd’hui, je souhaite mettre ces compétences au service des artisans et
+      des TPE du bâtiment dans le Var, avec des sites vitrines clé en main,
+      performants et visibles localement. Et je continue d’apprendre&nbsp;: ce
+      portfolio est construit avec Astro, et j’aborde TypeScript.
+    </p>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  .about__text {
+    max-width: var(--measure);
+
+    p + p {
+      margin-top: var(--space-3);
+    }
+  }
+
+  // Texte justifié à partir de 1024 px, avec césure automatique
+  @include from($bp-desktop) {
+    .about__text p {
+      text-align: justify;
+      hyphens: auto;
+    }
+  }
+</style>
