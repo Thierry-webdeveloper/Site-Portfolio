@@ -14,6 +14,8 @@ const liens = [
 
 <a class="skip-link" href="#contenu">Aller au contenu</a>
 
+<div class="scroll-sentinel" aria-hidden="true"></div>
+
 <header class="site-header">
   <a class="brand" href="/#accueil">
     <span class="brand__monogram" aria-hidden="true">TP</span>
@@ -186,6 +188,18 @@ const liens = [
       if (event.matches) setMenu(false);
     });
   }
+
+  // --- Filet sous l'en-tête dès que la page défile ---
+  const header = document.querySelector(".site-header");
+  const sentinel = document.querySelector(".scroll-sentinel");
+
+  if (header && sentinel) {
+    const observer = new IntersectionObserver(([entry]) => {
+      // Repère hors de l'écran = la page a défilé
+      header.classList.toggle("is-scrolled", !entry.isIntersecting);
+    });
+    observer.observe(sentinel);
+  }
 </script>
 
 <style lang="scss">
@@ -221,6 +235,21 @@ const liens = [
     min-height: 56px;
     padding: var(--space-1) var(--space-3);
     background-color: var(--bg-color);
+    box-shadow: 0 1px 0 transparent;
+    transition: box-shadow var(--duration-base) ease;
+  }
+
+  // Filet de 1 px dès que la page défile
+  .site-header.is-scrolled {
+    box-shadow: 0 1px 0 var(--border);
+  }
+
+  // Repère invisible tout en haut de la page
+  .scroll-sentinel {
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 1px;
   }
 
   // Monogramme + nom : un seul lien vers le haut de page
