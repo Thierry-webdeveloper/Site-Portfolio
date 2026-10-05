@@ -53,6 +53,12 @@ src/
 
 En cours de développement.
 
+## 🙏 Crédits
+
+- Icônes d'interface : [Feather Icons](https://feathericons.com/) (licence MIT)
+- Logos GitHub et LinkedIn : [Simple Icons](https://simpleicons.org/) (licence CC0)
+- Police : [Noto Serif Display](https://fonts.google.com/noto/specimen/Noto+Serif+Display) (licence SIL Open Font License)
+
 ## 👤 Auteur
 
 Thierry Pollastri — [contact@pollastri.fr](mailto:contact@pollastri.fr)
