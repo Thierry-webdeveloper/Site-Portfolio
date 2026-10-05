@@ -1,0 +1,60 @@
+---
+// Pied de page commun : droits, mentions légales, technologie du site.
+// L'année est calculée au moment du build (site statique).
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <p>
+    © {year} Thierry Pollastri
+    <span aria-hidden="true">·</span>
+    <a href="/mentions-legales">Mentions légales</a>
+  </p>
+  <span class="footer-sep" aria-hidden="true">·</span>
+  <p>Site construit avec Astro</p>
+</footer>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  // Mobile et tablette : deux lignes
+  .site-footer {
+    padding: var(--space-5) var(--page-gutter);
+    background-color: var(--bg-alt);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .footer-sep {
+    display: none;
+  }
+
+  // Espacement régulier entre les éléments, indépendant des espaces du code
+  p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  // Desktop : une seule ligne, séparateur central affiché
+  @include from($bp-desktop) {
+    .site-footer {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .footer-sep {
+      display: inline;
+    }
+  }
+
+  a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+    transition: color var(--duration-fast) ease;
+
+    &:hover {
+      color: var(--text-color);
+    }
+  }
+</style>
