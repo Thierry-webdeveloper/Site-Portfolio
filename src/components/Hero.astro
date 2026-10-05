@@ -1,0 +1,58 @@
+---
+// Section d'accueil (hero) : reprise de la maquette validée.
+import { Image } from "astro:assets";
+import portrait from "../assets/portrait.webp";
+---
+
+<section id="accueil" class="hero" aria-labelledby="accueil-titre">
+  <div class="hero__tagline">
+    <p class="hero__tagline-title">Bienvenue dans<br />mon univers !</p>
+    <p class="hero__tagline-subtitle">
+      Mes créations de 2026<br />à aujourd'hui
+    </p>
+  </div>
+
+  <!-- « Portfolio » : texte décoratif, pas un titre -->
+  <p class="hero__title">
+    <span class="hero__title-roman">Port</span><span class="hero__title-italic"
+      >folio</span
+    >
+  </p>
+
+  <div class="hero__picture">
+    <Image
+      src={portrait}
+      alt="Portrait de Thierry Pollastri"
+      widths={[220, 400, 800]}
+      sizes="(min-width: 1024px) 400px, 220px"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+
+  <div class="hero__profile">
+    <h1 id="accueil-titre" class="hero__name">Thierry Pollastri</h1>
+    <p class="hero__role">
+      Intégrateur Web - HTML, CSS/SCSS, JavaScript, React, Redux, Responsive
+      Design & Accessibilité Web
+    </p>
+  </div>
+
+  <a href="#projets" class="hero__arrow" aria-label="Voir les projets">
+    <svg
+      viewBox="0 0 80 24"
+      width="60"
+      height="18"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M0 12H76M76 12L64 4M76 12L64 20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+  </a>
+</section>
