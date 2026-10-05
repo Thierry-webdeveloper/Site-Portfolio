@@ -1,6 +1,7 @@
 // Variables CSS (design tokens) : lues par le navigateur,
 // elles changent en direct au passage du thème clair au thème sombre.
 // Importé une seule fois, par global.scss.
+@use "variables" as *;
 
 :root {
   // Thème clair
@@ -48,6 +49,7 @@
   // Mise en page
   --header-height: 56px;
   --sidebar-width: 75px;
+  --page-gutter: var(--space-3); // marge latérale : 16 px sur mobile
 }
 
 // Thème sombre : seules les valeurs qui changent sont redéfinies
@@ -62,4 +64,11 @@
   --btn-border: #ffffff;
   --btn-hover-bg: #ffffff;
   --btn-hover-text: #121212;
+}
+
+// Gouttière élargie à partir de la tablette : 32 px
+@include from($bp-tablet) {
+  :root {
+    --page-gutter: var(--space-5);
+  }
 }

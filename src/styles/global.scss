@@ -93,7 +93,6 @@ h3 {
 p {
   max-width: var(--measure);
   text-wrap: pretty; // évite un mot seul en dernière ligne
-  padding-left: 20px;
 }
 
 a {
@@ -111,6 +110,7 @@ a {
 section {
   scroll-margin-top: var(--header-height);
   padding-block: var(--space-6);
+  padding-inline: var(--page-gutter);
 
   @include from($bp-tablet) {
     padding-block: var(--space-7);
