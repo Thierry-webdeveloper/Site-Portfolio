@@ -320,11 +320,24 @@ const liens = [
     }
 
     a {
-      display: block;
-      padding-block: var(--space-3);
-      border-bottom: 1px solid var(--border);
-      font-size: 1.25rem;
-      text-decoration: none;
+      padding-block: var(--space-2);
+      border-bottom: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      // Soulignement présent mais invisible au repos
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.35em;
+      transition:
+        color var(--duration-fast) ease,
+        text-decoration-color var(--duration-fast) ease;
+
+      &:hover {
+        color: var(--text-color);
+        text-decoration-color: currentColor; // le soulignement apparaît
+      }
     }
   }
 
