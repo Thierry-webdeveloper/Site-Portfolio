@@ -99,6 +99,7 @@ a {
 
 // 6. Sections : espacement mobile-first et fonds alternés
 section {
+  scroll-margin-top: var(--header-height);
   padding-block: var(--space-6);
 
   @include from($bp-tablet) {
