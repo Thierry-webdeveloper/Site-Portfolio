@@ -36,6 +36,15 @@ body {
     color var(--duration-base) ease;
 }
 
+// Desktop : barre latérale à gauche, contenu à droite
+@include from($bp-desktop) {
+  body {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto; // en-tête, contenu, pied de page
+  }
+}
+
 // 3. Médias et formulaires
 img,
 picture,
@@ -84,6 +93,7 @@ h3 {
 p {
   max-width: var(--measure);
   text-wrap: pretty; // évite un mot seul en dernière ligne
+  padding-left: 20px;
 }
 
 a {

@@ -2,6 +2,7 @@
 // Gabarit commun à toutes les pages : <head>, police, styles globaux.
 import "../styles/global.scss";
 import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
 
 interface Props {
   title: string;
@@ -45,6 +46,7 @@ const { title, description } = Astro.props;
     />
   </head>
   <body>
+    <Sidebar />
     <Header />
     <main id="contenu" tabindex="-1">
       <slot />

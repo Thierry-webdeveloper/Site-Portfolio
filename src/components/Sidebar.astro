@@ -1,0 +1,63 @@
+---
+// Barre latérale décorative (desktop uniquement).
+// aria-hidden : son contenu est déjà dans la page (nom en h1, métier dans le hero),
+// les lecteurs d'écran ne l'entendent donc pas deux fois.
+---
+
+<div class="sidebar" aria-hidden="true">
+  <span class="sidebar__badge">Portfolio</span>
+  <span class="sidebar__name">Thierry Pollastri</span>
+  <span class="sidebar__badge">Intégrateur Web</span>
+</div>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  .sidebar {
+    display: none; // masquée sur mobile et tablette
+  }
+
+  @include from($bp-desktop) {
+    .sidebar {
+      position: sticky;
+      top: 0;
+      grid-row: 1 / -1; // occupe toute la hauteur de la grille
+      align-self: start; // nécessaire pour que sticky fonctionne dans la grille
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: var(--sidebar-width);
+      height: 100vh;
+      padding-block: var(--space-6);
+      border-right: 1px solid var(--border);
+      background-color: var(--sidebar-bg);
+      user-select: none;
+    }
+  }
+
+  // Texte vertical, lu de bas en haut
+  .sidebar__badge,
+  .sidebar__name {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .sidebar__badge {
+    padding: var(--space-3) var(--space-2);
+    border: 1px solid var(--toggle-border);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-serif-condensed);
+    font-stretch: var(--serif-width);
+    font-size: 0.85rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .sidebar__name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+</style>
