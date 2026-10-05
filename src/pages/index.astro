@@ -6,22 +6,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="Thierry Pollastri — Portfolio"
   description="Portfolio de Thierry Pollastri : compétences, projets et parcours."
 >
-  <section id="accueil">
-    <h2>Section 1 - Titre 2</h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-      dolores, suscipit voluptatibus animi perferendis cum iure sed beatae eius
-      sapiente iste earum. Laudantium rerum voluptatibus suscipit accusamus vero
-      repudiandae eligendi!
-    </p>
+  <section id="accueil" aria-labelledby="accueil-titre">
+    <h1 id="accueil-titre">Thierry Pollastri</h1>
   </section>
-  <section id="a-propos">
-    <h2>Section 2 - Titre 2</h2>
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores magni
-      temporibus eos quae ipsum labore amet beatae, rerum repellendus facere
-      eligendi delectus dignissimos ad incidunt nam, quo necessitatibus
-      consequuntur ipsa.
-    </p>
+
+  <section id="a-propos" aria-labelledby="a-propos-titre">
+    <h2 id="a-propos-titre">À propos</h2>
+  </section>
+
+  <section id="competences" aria-labelledby="competences-titre">
+    <h2 id="competences-titre">Compétences</h2>
+  </section>
+
+  <section id="projets" aria-labelledby="projets-titre">
+    <h2 id="projets-titre">Projets</h2>
+  </section>
+
+  <section id="temoignages" aria-labelledby="temoignages-titre">
+    <h2 id="temoignages-titre">Retours des évaluateurs</h2>
+  </section>
+
+  <section id="parcours" aria-labelledby="parcours-titre">
+    <h2 id="parcours-titre">Parcours</h2>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-titre">
+    <h2 id="contact-titre">Contact</h2>
   </section>
 </BaseLayout>
