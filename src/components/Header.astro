@@ -178,6 +178,13 @@ const liens = [
         menuBtn.focus();
       }
     });
+
+    // Referme le menu quand la fenêtre passe en version desktop
+    // (1024 px : même valeur que $bp-desktop, que le script ne peut pas lire)
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    desktop.addEventListener("change", (event) => {
+      if (event.matches) setMenu(false);
+    });
   }
 </script>
 
@@ -327,5 +334,57 @@ const liens = [
 
   .site-header:has(.menu-toggle[aria-expanded="true"]) .site-nav {
     display: block;
+  }
+
+  // --- Desktop : navigation dans l'en-tête ---
+  @include from($bp-desktop) {
+    .site-header {
+      flex-wrap: nowrap;
+      gap: var(--space-5);
+      padding-inline: var(--space-5);
+    }
+
+    // Identité portée par la barre latérale, menu repliable inutile
+    .brand,
+    .menu-toggle {
+      display: none;
+    }
+
+    // Le bouton de thème passe après la navigation
+    .header-actions {
+      order: 1;
+    }
+
+    .site-nav {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: space-between;
+      flex-basis: auto;
+      max-height: none;
+      overflow: visible;
+
+      ul {
+        display: flex;
+        gap: var(--space-5);
+      }
+
+      a {
+        padding-block: var(--space-2);
+        border-bottom: none;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color var(--duration-fast) ease;
+
+        &:hover {
+          color: var(--text-color);
+        }
+      }
+    }
+
+    .nav-social {
+      padding-block: 0;
+    }
   }
 </style>
