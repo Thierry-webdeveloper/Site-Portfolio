@@ -1,11 +1,66 @@
 // Styles de la galerie des projets (CSS Module)
 @use "../styles/variables" as *;
 
+// Barre de filtres : boutons qui passent à la ligne quand la place manque
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+// Bouton de filtre : pilule, comme les pastilles de thèmes
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast),
+    border-color var(--duration-fast),
+    color var(--duration-fast);
+
+  svg {
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+
+  &:hover {
+    border-color: var(--btn-border);
+  }
+
+  // Filtre actif : l'état vient de aria-pressed, seule source de vérité
+  &[aria-pressed="true"] {
+    border-color: var(--btn-border);
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-hover-text);
+
+    svg {
+      color: inherit;
+    }
+  }
+}
+
+// Nombre de projets affichés, discret
+.status {
+  margin-top: var(--space-3);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
 // Liste : cartes empilées, avec un espace régulier
 .list {
   display: grid;
   gap: var(--space-6);
-  margin-top: var(--space-6);
+  margin-top: var(--space-4);
   padding: 0;
   list-style: none;
 }
