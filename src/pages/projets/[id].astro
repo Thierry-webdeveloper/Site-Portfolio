@@ -36,7 +36,8 @@ const { nom, titre, accroche, filtres, depot, site, kanban } = projet.data;
 >
   <article class="project">
     <a class="project__back" href="/#projets">
-      <span aria-hidden="true">←</span> Retour aux projets
+      <span aria-hidden="true">←</span>
+      <span class="project__label">Retour aux projets</span>
     </a>
 
     <header class="project__header">
@@ -103,16 +104,20 @@ const { nom, titre, accroche, filtres, depot, site, kanban } = projet.data;
         precedent && (
           <a href={`/projets/${precedent.id}`} rel="prev">
             <span aria-hidden="true">←</span>
-            <span class="visually-hidden">Projet précédent :</span>
-            {precedent.data.nom}
+            <span class="project__label">
+              <span class="visually-hidden">Projet précédent : </span>
+              {precedent.data.nom}
+            </span>
           </a>
         )
       }
       {
         suivant && (
           <a href={`/projets/${suivant.id}`} rel="next">
-            <span class="visually-hidden">Projet suivant :</span>
-            {suivant.data.nom}
+            <span class="project__label">
+              <span class="visually-hidden">Projet suivant : </span>
+              {suivant.data.nom}
+            </span>
             <span aria-hidden="true">→</span>
           </a>
         )
@@ -120,3 +125,223 @@ const { nom, titre, accroche, filtres, depot, site, kanban } = projet.data;
     </nav>
   </article>
 </BaseLayout>
+
+<style lang="scss">
+  @use "../../styles/variables" as *;
+
+  .project {
+    padding: var(--space-5) var(--page-gutter) var(--space-7);
+  }
+
+  // Lien de retour, discret
+  .project__back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: 44px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--text-color);
+    }
+  }
+
+  .project__header {
+    max-width: 50rem;
+    margin-block: var(--space-4) var(--space-6);
+
+    h1 {
+      font-family: var(--font-serif-condensed);
+      font-stretch: var(--serif-width);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 600;
+      line-height: 1.1;
+    }
+  }
+
+  .project__accroche {
+    margin-top: var(--space-3);
+    color: var(--text-muted);
+    font-family: var(--font-serif-condensed);
+    font-stretch: var(--serif-width);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-style: italic;
+  }
+
+  // « En bref » au-dessus du texte, puis à droite et collant sur desktop
+  .project__layout {
+    display: grid;
+    gap: var(--space-6);
+
+    @include from($bp-desktop) {
+      grid-template-columns: minmax(0, 1fr) 18rem;
+      align-items: start;
+    }
+  }
+
+  .project__aside {
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow-card);
+
+    h2 {
+      margin-bottom: var(--space-3);
+      font-size: 1.5rem;
+    }
+
+    @include from($bp-desktop) {
+      position: sticky;
+      top: calc(var(--header-height) + var(--space-4));
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+
+  dl {
+    display: grid;
+    gap: var(--space-1);
+    margin-bottom: var(--space-4);
+  }
+
+  dt {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  dd {
+    margin-bottom: var(--space-2);
+  }
+
+  .project__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: 0;
+    list-style: none;
+
+    li {
+      padding: var(--space-1) var(--space-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+    }
+  }
+
+  // Liens externes en boutons secondaires
+  .project__links {
+    display: grid;
+    gap: var(--space-2);
+    padding: 0;
+    list-style: none;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: var(--space-2) var(--space-3);
+      border: 1px solid var(--text-color);
+      border-radius: var(--radius-sm);
+      color: inherit;
+      font-weight: 500;
+      text-decoration: none;
+      transition:
+        background-color var(--duration-base) ease,
+        color var(--duration-base) ease;
+
+      &:hover {
+        background-color: var(--btn-hover-bg);
+        color: var(--btn-hover-text);
+      }
+    }
+  }
+
+  // Texte de la fiche, produit par le Markdown : :global() pour l'atteindre
+  .project__content {
+    max-width: var(--measure);
+
+    @include from($bp-desktop) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    > :global(* + *) {
+      margin-top: var(--space-3);
+    }
+
+    :global(h2) {
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+    }
+
+    :global(h2:first-child) {
+      margin-top: 0;
+    }
+
+    :global(ul) {
+      padding-left: var(--space-4);
+    }
+
+    :global(li + li) {
+      margin-top: var(--space-1);
+    }
+
+    :global(table) {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    :global(th),
+    :global(td) {
+      padding: var(--space-2) var(--space-3);
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    :global(th) {
+      font-weight: 600;
+    }
+
+    :global(code) {
+      padding: 0 var(--space-1);
+      border-radius: 4px;
+      background-color: var(--bg-alt);
+      font-size: 0.9em;
+    }
+  }
+
+  // Seul le texte des liens de navigation est souligné, pas les flèches
+  .project__label {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+  }
+
+  // Projet précédent / suivant
+  .project__pager {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: space-between;
+    margin-top: var(--space-7);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border);
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      min-height: 44px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    a[rel="next"] {
+      margin-left: auto; // reste à droite même sans lien « précédent »
+    }
+  }
+</style>
