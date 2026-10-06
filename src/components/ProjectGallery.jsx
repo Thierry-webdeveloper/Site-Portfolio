@@ -1,6 +1,6 @@
 // Galerie des projets : rendue en HTML au build (aucun JavaScript pour l'instant).
-// Le filtre sera ajouté à l'étape 18e.
 import styles from "./ProjectGallery.module.scss";
+import ThemeIcon from "./ThemeIcon.jsx";
 
 export default function ProjectGallery({ projets }) {
   return (
@@ -17,7 +17,10 @@ export default function ProjectGallery({ projets }) {
 
             <ul className={styles.tags} role="list">
               {projet.filtres.map((filtre) => (
-                <li key={filtre}>{filtre}</li>
+                <li key={filtre}>
+                    <ThemeIcon theme={filtre} />
+                    {filtre}
+                </li>
               ))}
             </ul>
 
