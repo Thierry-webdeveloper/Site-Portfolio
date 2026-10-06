@@ -26,6 +26,7 @@ const projets = defineCollection({
     filtres: z.array(filtres).min(1),
     depot: z.string().url().optional(), // dépôt GitHub
     site: z.string().url().optional(), // site en ligne
+    kanban: z.string().url().optional(), // tableau de suivi public (Notion)
   }),
 });
 
