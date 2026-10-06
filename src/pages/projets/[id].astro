@@ -1,0 +1,122 @@
+---
+// Page d'un projet : une page générée par fiche de la collection « projets ».
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Au build : une page par fiche, triées par ordre d'affichage
+export async function getStaticPaths() {
+  const projets = (await getCollection("projets")).sort(
+    (a, b) => a.data.ordre - b.data.ordre,
+  );
+
+  return projets.map((projet, index) => ({
+    params: { id: projet.id },
+    props: {
+      projet,
+      precedent: projets[index - 1],
+      suivant: projets[index + 1],
+    },
+  }));
+}
+
+interface Props {
+  projet: CollectionEntry<"projets">;
+  precedent?: CollectionEntry<"projets">;
+  suivant?: CollectionEntry<"projets">;
+}
+
+const { projet, precedent, suivant } = Astro.props;
+const { Content } = await render(projet);
+const { nom, titre, accroche, filtres, depot, site, kanban } = projet.data;
+---
+
+<BaseLayout
+  title={`${nom} — Projet de formation | Thierry Pollastri`}
+  description={accroche}
+>
+  <article class="project">
+    <a class="project__back" href="/#projets">
+      <span aria-hidden="true">←</span> Retour aux projets
+    </a>
+
+    <header class="project__header">
+      <h1>{titre}</h1>
+      <p class="project__accroche">{accroche}</p>
+    </header>
+
+    <div class="project__layout">
+      <aside class="project__aside" aria-labelledby="en-bref">
+        <h2 id="en-bref">En bref</h2>
+
+        <dl>
+          <dt>Cadre</dt>
+          <dd>Formation OpenClassrooms, projet {projet.data.projet}</dd>
+          <dt>Thèmes</dt>
+          <dd>
+            <ul class="project__tags" role="list">
+              {filtres.map((filtre) => <li>{filtre}</li>)}
+            </ul>
+          </dd>
+        </dl>
+
+        <ul class="project__links" role="list">
+          {
+            site && (
+              <li>
+                <a href={site} target="_blank" rel="noopener">
+                  Voir le site
+                  <span class="visually-hidden"> {nom} (nouvel onglet)</span>
+                </a>
+              </li>
+            )
+          }
+          {
+            depot && (
+              <li>
+                <a href={depot} target="_blank" rel="noopener">
+                  Dépôt GitHub
+                  <span class="visually-hidden"> de {nom} (nouvel onglet)</span>
+                </a>
+              </li>
+            )
+          }
+          {
+            kanban && (
+              <li>
+                <a href={kanban} target="_blank" rel="noopener">
+                  Kanban Notion
+                  <span class="visually-hidden"> de {nom} (nouvel onglet)</span>
+                </a>
+              </li>
+            )
+          }
+        </ul>
+      </aside>
+
+      <div class="project__content">
+        <Content />
+      </div>
+    </div>
+
+    <nav class="project__pager" aria-label="Autres projets">
+      {
+        precedent && (
+          <a href={`/projets/${precedent.id}`} rel="prev">
+            <span aria-hidden="true">←</span>
+            <span class="visually-hidden">Projet précédent :</span>
+            {precedent.data.nom}
+          </a>
+        )
+      }
+      {
+        suivant && (
+          <a href={`/projets/${suivant.id}`} rel="next">
+            <span class="visually-hidden">Projet suivant :</span>
+            {suivant.data.nom}
+            <span aria-hidden="true">→</span>
+          </a>
+        )
+      }
+    </nav>
+  </article>
+</BaseLayout>
