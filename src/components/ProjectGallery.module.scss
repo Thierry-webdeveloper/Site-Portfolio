@@ -1,1 +1,160 @@
-// Styles de la galerie des projets (CSS Module) : étape 18d-2
+// Styles de la galerie des projets (CSS Module)
+@use "../styles/variables" as *;
+
+// Liste : cartes empilées, avec un espace régulier
+.list {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+// Carte : image puis texte sur mobile ; deux colonnes en zigzag sur desktop
+.card {
+  display: grid;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-card);
+
+  @include from($bp-desktop) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+
+    // Les deux blocs partagent la même ligne de la grille
+    > * {
+      grid-row: 1;
+    }
+
+    // Une carte sur deux : l'image passe à droite
+    &:nth-child(even) .media {
+      grid-column: 2;
+    }
+
+    &:nth-child(even) .body {
+      grid-column: 1;
+    }
+  }
+}
+
+// L'image s'affiche en premier, sans changer l'ordre du HTML
+.media {
+  order: -1;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  background-color: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+
+  @include from($bp-desktop) {
+    aspect-ratio: auto; // la hauteur suit le texte
+    height: 100%;
+    border-bottom: 0;
+  }
+}
+
+// Numéro provisoire, en attendant les captures (tâche 9)
+.number {
+  color: var(--accent);
+  font-family: var(--font-serif-condensed);
+  font-stretch: var(--serif-width);
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.body {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+
+  @include from($bp-tablet) {
+    padding: var(--space-5);
+  }
+
+  @include from($bp-desktop) {
+    padding: var(--space-6);
+  }
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-serif-condensed);
+  font-stretch: var(--serif-width);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.accroche {
+  color: var(--text-muted);
+}
+
+// Thèmes en pastilles, comme sur les pages projets
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    font-size: 0.85rem;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+// Base commune des deux boutons
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--btn-border);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color var(--duration-fast),
+    color var(--duration-fast);
+}
+
+// Bouton principal : plein, il s'inverse au survol
+.primary {
+  background-color: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
+
+  &:hover {
+    background-color: transparent;
+    color: var(--text-color);
+  }
+}
+
+// Bouton secondaire : contour, il se remplit au survol
+.secondary {
+  background-color: transparent;
+  color: var(--text-color);
+
+  &:hover {
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-hover-text);
+  }
+}
