@@ -1,0 +1,73 @@
+---
+// Section « Contact » : lien direct vers l'adresse e-mail et les profils.
+import SocialLinks from "./SocialLinks.astro";
+
+const email = "contact@pollastri.fr";
+---
+
+<section id="contact" class="contact" aria-labelledby="contact-titre">
+  <h2 id="contact-titre">Contact</h2>
+
+  <p class="contact__intro">Un projet de site vitrine&nbsp;? Parlons-en.</p>
+
+  <a class="contact__email" href={`mailto:${email}`}>
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+      ></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </svg>
+    <span><span class="visually-hidden">Écrire à </span>{email}</span>
+  </a>
+
+  <SocialLinks />
+</section>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  .contact__intro {
+    margin-bottom: var(--space-4);
+    font-size: 1.25rem;
+  }
+
+  // Bouton principal : pleine largeur sur mobile, ajusté au texte ensuite
+  .contact__email {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    margin-bottom: var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--text-color);
+    border-radius: var(--radius-sm);
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    font-weight: 500;
+    text-decoration: none;
+    transition:
+      background-color var(--duration-base) ease,
+      color var(--duration-base) ease;
+
+    &:hover {
+      background-color: transparent;
+      color: var(--text-color);
+    }
+
+    @include from($bp-tablet) {
+      display: inline-flex;
+    }
+  }
+</style>
