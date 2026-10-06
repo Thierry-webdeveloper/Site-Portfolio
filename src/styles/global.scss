@@ -110,7 +110,7 @@ a {
 section {
   scroll-margin-top: var(--header-height);
   padding-block: var(--space-6);
-  padding-inline: var(--page-gutter);
+  padding-inline: var(--page-inline);
 
   @include from($bp-tablet) {
     padding-block: var(--space-7);

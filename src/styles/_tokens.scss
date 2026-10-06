@@ -50,6 +50,9 @@
   --header-height: 56px;
   --sidebar-width: 75px;
   --page-gutter: var(--space-3); // marge latérale : 16 px sur mobile
+  --content-max: 112.5rem; // largeur maximale du contenu : 1600 px
+  // Marge latérale effective : la gouttière, ou plus pour centrer le contenu
+  --page-inline: max(var(--page-gutter), (100% - var(--content-max)) / 2);
 
   // Portrait
   --shadow-portrait:
