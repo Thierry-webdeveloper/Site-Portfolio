@@ -1,0 +1,131 @@
+---
+// Page des mentions légales.
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Mentions légales — Thierry Pollastri"
+  description="Mentions légales du portfolio de Thierry Pollastri : éditeur, hébergement, propriété intellectuelle et données personnelles."
+>
+  <article class="legal">
+    <h1>Mentions légales</h1>
+
+    <h2>Éditeur du site</h2>
+    <p>
+      Ce site est le portfolio personnel de Thierry Pollastri, réalisé dans le
+      cadre de la formation Intégrateur Web d’OpenClassrooms.
+    </p>
+    <address>
+      Éditeur et directeur de la publication&nbsp;: Thierry Pollastri,
+      particulier<br />
+      Contact&nbsp;: <a href="mailto:contact@pollastri.fr"
+        >contact@pollastri.fr</a
+      >
+    </address>
+
+    <h2>Hébergement</h2>
+    <address>
+      GitHub, Inc. (service GitHub Pages)<br />
+      88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br />
+      <a href="https://github.com">github.com</a>
+    </address>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>
+      Les textes, la photographie et le code de ce site sont la propriété de
+      Thierry Pollastri, sauf mention contraire. Le code source est consultable
+      sur{" "}
+      <a href="https://github.com/Thierry-webdeveloper/Site-Portfolio">GitHub</a
+      >.
+    </p>
+    <p>
+      Les projets présentés ont été réalisés pendant la formation, à partir de
+      scénarios fictifs fournis par OpenClassrooms. Les marques et logos cités
+      (GitHub, LinkedIn, React, Astro…) appartiennent à leurs propriétaires
+      respectifs.
+    </p>
+
+    <h2>Données personnelles et cookies</h2>
+    <p>
+      Ce site ne dépose aucun cookie, n’utilise aucun outil de mesure d’audience
+      et ne contient aucun formulaire&nbsp;: il ne collecte aucune donnée
+      personnelle.
+    </p>
+    <p>
+      Le choix du thème clair ou sombre est mémorisé dans votre navigateur
+      (stockage local). Il n’est jamais transmis.
+    </p>
+    <p>
+      Le lien de contact ouvre votre messagerie. Les messages reçus servent
+      uniquement à vous répondre.
+    </p>
+    <p>
+      Deux services tiers interviennent lors de la consultation&nbsp;: la police
+      de caractères est chargée depuis Google Fonts, et le site est servi par
+      GitHub. Ils reçoivent à ce titre votre adresse IP, selon leurs propres
+      politiques de confidentialité&nbsp;:{" "}
+      <a href="https://policies.google.com/privacy?hl=fr">Google</a> et{" "}
+      <a
+        href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement"
+        >GitHub</a
+      >.
+    </p>
+
+    <h2>Crédits</h2>
+    <ul>
+      <li>Icônes d’interface&nbsp;: Feather Icons (licence MIT)</li>
+      <li>Logos de marques&nbsp;: Simple Icons (licence CC0)</li>
+      <li>Police&nbsp;: Noto Serif Display (licence SIL Open Font License)</li>
+      <li>Site construit avec Astro</li>
+    </ul>
+
+    <p class="legal__update">Dernière mise à jour&nbsp;: octobre 2026</p>
+  </article>
+</BaseLayout>
+
+<style lang="scss">
+  .legal {
+    max-width: calc(var(--measure) + 2 * var(--page-gutter));
+    padding: var(--space-6) var(--page-gutter);
+
+    // Titre de page : même style que les titres de section
+    h1 {
+      margin-bottom: var(--space-5);
+      font-family: var(--font-serif-condensed);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-stretch: var(--serif-width);
+      font-weight: 500;
+    }
+
+    // Sous-titres plus petits que sur la page d'accueil
+    h2 {
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    p + p,
+    p + address {
+      margin-top: var(--space-3);
+    }
+
+    address {
+      font-style: normal;
+    }
+
+    a {
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.25em;
+    }
+
+    ul {
+      padding-left: var(--space-4);
+    }
+  }
+
+  .legal__update {
+    margin-top: var(--space-6);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+</style>
