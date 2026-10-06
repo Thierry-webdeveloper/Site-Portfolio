@@ -1,0 +1,95 @@
+---
+// Section « Parcours » : frise verticale, du plus ancien au projet à venir.
+const etapes = [
+  {
+    periode: "1985 - 1989",
+    texte:
+      "Programmation et électronique en autodidacte (BASIC, assembleur, Pascal, automatismes)",
+  },
+  {
+    periode: "1988 – 2024",
+    texte: "Négoce de matériaux, au contact des artisans du bâtiment (37 ans)",
+  },
+  {
+    periode: "2014 – aujourd’hui",
+    texte: "Domotique avec Home Assistant (YAML)",
+  },
+  {
+    periode: "2026",
+    texte: "Formation Intégrateur Web, OpenClassrooms",
+  },
+  {
+    periode: "Ensuite",
+    texte:
+      "Consultant indépendant : sites vitrines pour les artisans et TPE du Var",
+  },
+];
+---
+
+<section id="parcours" class="journey" aria-labelledby="parcours-titre">
+  <h2 id="parcours-titre">Parcours</h2>
+
+  <ol class="timeline" role="list">
+    {
+      etapes.map((etape) => (
+        <li class="timeline__item">
+          <p class="timeline__period">{etape.periode}</p>
+          <p class="timeline__text">{etape.texte}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style lang="scss">
+  .timeline {
+    max-width: var(--measure);
+    padding: 0;
+    list-style: none;
+  }
+
+  .timeline__item {
+    position: relative;
+    padding-left: var(--space-5);
+    padding-bottom: var(--space-5);
+
+    // Point de l'étape
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0.3em;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: var(--radius-round);
+      background-color: var(--accent);
+    }
+
+    // Trait vertical vers l'étape suivante (sauf après la dernière)
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: calc(0.3em + 16px);
+      bottom: 4px;
+      left: 5px;
+      width: 2px;
+      background-color: var(--toggle-border);
+    }
+
+    // Dernière étape, à venir : point creux
+    &:last-child {
+      padding-bottom: 0;
+
+      &::before {
+        border: 2px solid var(--accent);
+        background-color: transparent;
+      }
+    }
+  }
+
+  .timeline__period {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+</style>
