@@ -1,0 +1,148 @@
+---
+// Section « Retours des évaluateurs » : extraits fidèles des comptes rendus de soutenance.
+// Règle : texte mot pour mot, coupures signalées par […], évaluateurs anonymes.
+const retours = [
+  {
+    projet: 7,
+    nom: "Kasa",
+    id: "kasa",
+    extraits: [
+      "Projet conforme aux maquettes et aux spécifications fonctionnelles.",
+    ],
+  },
+  {
+    projet: 8,
+    nom: "Nina Carducci",
+    id: "nina-carducci",
+    extraits: [
+      "Thierry a fait une bonne présentation et a très bien répondu aux questions de l'évaluateur.",
+    ],
+  },
+  {
+    projet: 11,
+    nom: "Menu Maker",
+    id: "menu-maker",
+    extraits: [
+      "Le tableau Kanban respecte les critères demandés : tâches classées, attribuées, estimées et documentées, avec critères de succès, spécifications techniques […]",
+      "Très bonne présentation et bonne maîtrise du concept Scrum au sein du groupe […]",
+    ],
+  },
+  {
+    projet: 9,
+    nom: "724events",
+    id: "724events",
+    extraits: [
+      "Vraie démarche d'analyse de code existant […]",
+      "Dépôt Git de qualité pro : commits atomiques (1 bug = 1 commit), messages qui expliquent le pourquoi et le périmètre de chaque correction, y compris quand elle déborde du bug initial",
+    ],
+  },
+];
+---
+
+<section
+  id="temoignages"
+  class="testimonials"
+  aria-labelledby="temoignages-titre"
+>
+  <h2 id="temoignages-titre">Retours des évaluateurs</h2>
+  <p class="testimonials__intro">
+    Extraits des comptes rendus de soutenance des projets de la formation.
+  </p>
+
+  <ul class="testimonials__list" role="list">
+    {
+      retours.map((retour) => (
+        <li>
+          <figure class="quote">
+            <blockquote>
+              {retour.extraits.map((extrait) => (
+                <p>{extrait}</p>
+              ))}
+            </blockquote>
+            <figcaption>
+              — Évaluateur OpenClassrooms,{" "}
+              <span class="quote__source">
+                projet {retour.projet} ·{" "}
+                <a href={`/projets/${retour.id}`}>{retour.nom}</a>
+              </span>
+            </figcaption>
+          </figure>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style lang="scss">
+  @use "../styles/variables" as *;
+
+  .testimonials__intro {
+    margin-top: var(--space-3);
+    color: var(--text-muted);
+  }
+
+  // 1 colonne sur mobile, 2 sur tablette, 4 sur grand écran
+  .testimonials__list {
+    display: grid;
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+    padding: 0;
+    list-style: none;
+
+    @include from($bp-tablet) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include from($bp-wide) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  // Carte de citation : filet d'accent à gauche (Design System)
+  .quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-4);
+    height: 100%;
+    margin: 0;
+    padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-sm);
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow-card);
+  }
+
+  blockquote {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    font-family: var(--font-serif-condensed);
+    font-stretch: var(--serif-width);
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.45;
+  }
+
+  figcaption {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  // « projet 11 · Menu Maker » reste groupé sur une même ligne
+  .quote__source {
+    white-space: nowrap;
+  }
+
+  // Nom du projet : lien souligné en permanence (lien dans un texte)
+  cite {
+    font-style: normal;
+
+    a {
+      color: var(--text-color);
+      font-weight: 600;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+    }
+  }
+</style>
