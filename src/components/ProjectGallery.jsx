@@ -1,54 +1,93 @@
-// Galerie des projets : rendue en HTML au build (aucun JavaScript pour l'instant).
+// Galerie des projets, avec un filtre par thème (îlot React chargé avec client:visible).
+import { useState } from "react";
 import styles from "./ProjectGallery.module.scss";
 import ThemeIcon from "./ThemeIcon.jsx";
 
-export default function ProjectGallery({ projets }) {
-  return (
-    <ol className={styles.list} role="list">
-      {projets.map((projet, index) => (
-        <li key={projet.id} className={styles.card}>
-          <div className={styles.body}>
-            <p className={styles.meta}>
-              Projet {projet.projet}
-              {projet.complement && " · en complément"}
-            </p>
-            <h3 className={styles.title}>{projet.titre}</h3>
-            <p className={styles.accroche}>{projet.accroche}</p>
+const TOUS = "Tous";
 
-            <ul className={styles.tags} role="list">
-              {projet.filtres.map((filtre) => (
-                <li key={filtre}>
+export default function ProjectGallery({ projets }) {
+  // Seul état du composant : le thème choisi
+  const [actif, setActif] = useState(TOUS);
+
+  // Les thèmes réellement utilisés, sans doublon, dans l'ordre d'apparition
+  const themes = [...new Set(projets.flatMap((projet) => projet.filtres))];
+
+  // Le numéro est fixé sur la liste complète : il ne change pas quand on filtre
+  const numerotes = projets.map((projet, index) => ({ ...projet, numero: index + 1 }));
+
+  const visibles =
+    actif === TOUS
+      ? numerotes
+      : numerotes.filter((projet) => projet.filtres.includes(actif));
+
+  return (
+    <>
+      <div className={styles.filters} role="group" aria-label="Filtrer les projets par thème">
+        {[TOUS, ...themes].map((theme) => (
+          <button
+            key={theme}
+            type="button"
+            className={styles.filter}
+            aria-pressed={actif === theme}
+            onClick={() => setActif(theme)}
+          >
+            <ThemeIcon theme={theme} />
+            {theme}
+          </button>
+        ))}
+      </div>
+
+      {/* Annonce le résultat aux lecteurs d'écran après chaque clic */}
+      <p className={styles.status} aria-live="polite">
+        {visibles.length} projet{visibles.length > 1 && "s"} affiché{visibles.length > 1 && "s"}
+      </p>
+
+      <ol className={styles.list} role="list">
+        {visibles.map((projet) => (
+          <li key={projet.id} className={styles.card}>
+            <div className={styles.body}>
+              <p className={styles.meta}>
+                Projet {projet.projet}
+                {projet.complement && " · en complément"}
+              </p>
+              <h3 className={styles.title}>{projet.titre}</h3>
+              <p className={styles.accroche}>{projet.accroche}</p>
+
+              <ul className={styles.tags} role="list">
+                {projet.filtres.map((filtre) => (
+                  <li key={filtre}>
                     <ThemeIcon theme={filtre} />
                     {filtre}
-                </li>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
 
-            <div className={styles.actions}>
-              <a className={styles.primary} href={`/projets/${projet.id}`}>
-                Détails du projet
-                <span className="visually-hidden"> {projet.nom}</span>
-              </a>
-              {projet.site && (
-                <a
-                  className={styles.secondary}
-                  href={projet.site}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Voir le site
-                  <span className="visually-hidden"> {projet.nom} (nouvel onglet)</span>
+              <div className={styles.actions}>
+                <a className={styles.primary} href={`/projets/${projet.id}`}>
+                  Détails du projet
+                  <span className="visually-hidden"> {projet.nom}</span>
                 </a>
-              )}
+                {projet.site && (
+                  <a
+                    className={styles.secondary}
+                    href={projet.site}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Voir le site
+                    <span className="visually-hidden"> {projet.nom} (nouvel onglet)</span>
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
 
-          {/* Emplacement provisoire de la capture (tâche 9) : purement décoratif */}
-          <div className={styles.media} aria-hidden="true">
-            <span className={styles.number}>{String(index + 1).padStart(2, "0")}</span>
-          </div>
-        </li>
-      ))}
-    </ol>
+            {/* Emplacement provisoire de la capture (tâche 9) : purement décoratif */}
+            <div className={styles.media} aria-hidden="true">
+              <span className={styles.number}>{String(projet.numero).padStart(2, "0")}</span>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </>
   );
 }

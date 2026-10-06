@@ -10,5 +10,5 @@ const projets = (await getCollection("projets"))
 
 <section id="projets" aria-labelledby="projets-titre">
   <h2 id="projets-titre">Projets</h2>
-  <ProjectGallery projets={projets} />
+  <ProjectGallery client:visible projets={projets} />
 </section>
