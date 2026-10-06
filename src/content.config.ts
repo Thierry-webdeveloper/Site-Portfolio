@@ -1,0 +1,32 @@
+// Collections de contenu : chaque fiche projet est vérifiée par ce schéma au build.
+import { defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
+
+// Filtres autorisés : une faute de frappe dans une fiche provoque une erreur
+const filtres = z.enum([
+  "React",
+  "Sass",
+  "SEO",
+  "Performance",
+  "Accessibilité",
+  "Tests",
+  "Agile",
+]);
+
+const projets = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/projets" }),
+  schema: z.object({
+    nom: z.string(), // nom court, par exemple « Kasa »
+    titre: z.string(), // titre accrocheur de la fiche
+    accroche: z.string(), // une phrase de présentation
+    projet: z.number().int(), // numéro du projet dans la formation
+    ordre: z.number().int(), // ordre d'affichage
+    complement: z.boolean().default(false), // projet présenté en complément
+    filtres: z.array(filtres).min(1),
+    depot: z.string().url().optional(), // dépôt GitHub
+    site: z.string().url().optional(), // site en ligne
+  }),
+});
+
+export const collections = { projets };
