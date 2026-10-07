@@ -350,6 +350,40 @@ const { nom, titre, accroche, filtres, depot, site, kanban, image, imageAlt } =
       font-weight: 600;
     }
 
+    // Captures de preuve : le paragraphe qui ne contient que des images
+    :global(p:has(> img)) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    :global(img) {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 36rem; // limite les images hautes, comme le diagramme
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-card);
+    }
+
+    :global(p:has(> img + img)) {
+      gap: var(--space-2);
+    }
+
+    :global(p:has(> img + img) img) {
+      flex-shrink: 0; // la largeur suit la hauteur : jamais d'image écrasée
+      height: 4.5rem;
+    }
+
+    // Légende : le paragraphe qui suit les images
+    :global(p:has(> img) + p) {
+      margin-top: var(--space-2);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
     :global(code) {
       padding: 0 var(--space-1);
       border-radius: 4px;

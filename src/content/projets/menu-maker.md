@@ -34,6 +34,10 @@ Qwenta, un imprimeur, veut proposer aux restaurateurs un outil web pour créer e
 - Veille technologique.
 - Vérification des contrastes selon les critères WCAG.
 
+![Diagramme de classes : un restaurateur possède un restaurant et est lié à plusieurs e-mails secondaires ; un restaurant a créé plusieurs menus ; chaque menu contient des catégories, qui contiennent des plats](../../assets/projets/menu-maker-diagramme-classes.svg)
+
+_Le diagramme de classes : du restaurateur jusqu'aux plats._
+
 ## Résultats et impact
 
 - Des spécifications de 6 pages, où chaque choix est justifié par deux arguments.
@@ -42,6 +46,10 @@ Qwenta, un imprimeur, veut proposer aux restaurateurs un outil web pour créer e
 - Une présentation de 15 slides.
 - 7 questions ouvertes consignées, chacune avec son hypothèse de travail.
 - Le projet est validé sur les 5 compétences. L'évaluateur salue la présentation et la maîtrise de Scrum.
+
+![Fiche « Page login » du Product Backlog : priorité P1, epic Connexion, trois tâches liées du Sprint Backlog, user story et critères de succès](../../assets/projets/menu-maker-tache.webp)
+
+_Une User Story du Product Backlog, reliée à ses trois tâches techniques du Sprint Backlog._
 
 Pour un client, cette étape garantit que chaque fonctionnalité répond à un besoin validé avant la première ligne de code.
 

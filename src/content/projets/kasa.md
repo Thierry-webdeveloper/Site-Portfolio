@@ -40,6 +40,10 @@ Kasa loue des logements entre particuliers et refond son ancien site. C'est un s
 - L'application est conforme aux maquettes, sur ordinateur (1440 px) comme sur mobile (375 px).
 - Le projet est validé sur les 5 compétences. L'évaluateur souligne un code lisible et maintenable.
 
+![Page d'un logement de Kasa : carrousel photo avec flèches et compteur « 1/5 », tags, note en étoiles, et menus déroulants Description et Équipements ouverts](../../assets/projets/kasa-logement.webp)
+
+_La page d'un logement : le carrousel et les deux menus déroulants ouverts._
+
 ## Perspectives d'amélioration
 
 Elles reprennent les axes de l'évaluateur :

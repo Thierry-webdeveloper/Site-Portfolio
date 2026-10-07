@@ -45,6 +45,10 @@ Nina Carducci, photographe à Bordeaux, avait un site lent, peu accessible et ma
 | Affichage du contenu principal | 16,4 s | 1,3 s          |
 | Poids des images               | 30 Mo  | 1,2 Mo (−96 %) |
 
+![Scores Lighthouse avant optimisation : performance 74, accessibilité 68, bonnes pratiques 100, SEO 73](../../assets/projets/nina-carducci-lighthouse-avant.webp) ![Scores Lighthouse après optimisation : performance 97, accessibilité 100, bonnes pratiques 96, SEO 100](../../assets/projets/nina-carducci-lighthouse-apres.webp)
+
+_Lighthouse, mode desktop : avant (serveur local) et après (site en ligne)._
+
 - Le test des résultats enrichis de Google valide la fiche d'entreprise locale.
 - WAVE ne signale plus aucune erreur.
 - Le projet est validé. L'évaluateur relève plusieurs points facultatifs traités en plus des points obligatoires.
@@ -54,3 +58,8 @@ C'est l'enjeu d'un site d'artisan : s'afficher vite sur mobile et être associé
 ## Perspectives d'amélioration
 
 L'évaluateur n'en a formulé aucune. Piste possible : des images adaptatives (`srcset`), pour servir à chaque écran une image à sa taille.
+
+Depuis la soutenance, deux corrections ont été apportées :
+
+- proportions des images : ajout de la déclaration CSS `height: auto` au sélecteur `img` → le score `Bonnes pratiques` passe de 96 à 100.
+- ajout de l'attribut `autocomplete` au formulaire de contact.

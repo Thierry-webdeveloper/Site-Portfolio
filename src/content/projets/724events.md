@@ -40,6 +40,10 @@ Le site one-page de l'agence 724events avait été abandonné par son développe
 - Le cahier de recette compte 11 scénarios.
 - L'évaluateur qualifie le dépôt Git de « qualité pro ». Il relève aussi que j'ai corrigé des anomalies non listées.
 
+![Terminal : 16 suites de tests réussies, 58 tests réussis et 3 ignorés](../../assets/projets/724events-tests.webp)
+
+_Le résultat de la suite de tests._
+
 ## Perspectives d'amélioration
 
 L'évaluateur n'en a formulé aucune. Le scénario suggérait 3 tests unitaires et 3 tests d'intégration supplémentaires ; j'en ai écrit un de chaque. Deux pistes restent ouvertes : compléter cette couverture et ajouter des scénarios négatifs, comme l'envoi d'un formulaire vide.
