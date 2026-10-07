@@ -6,6 +6,8 @@ projet: 11
 ordre: 3
 filtres: ["Agile"]
 kanban: "https://bald-desk-d7c.notion.site/Menu-Maker-by-Qwenta-3db6b313e86e80d18528ca6dd81e5bc3"
+image: "../../assets/projets/menu-maker-backlog.webp"
+imageAlt: "Product Backlog de Menu Maker dans Notion : fonctionnalités classées par priorité et par epic, chacune reliée à ses tâches du Sprint Backlog"
 ---
 
 ## Contexte

@@ -75,7 +75,6 @@
 
   @include from($bp-desktop) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: center;
 
     // Les deux blocs partagent la même ligne de la grille
     > * {
@@ -93,34 +92,51 @@
   }
 }
 
-// L'image s'affiche en premier, sans changer l'ordre du HTML
+// L'image s'affiche en premier, sans changer l'ordre du HTML.
+// Cadre 16/10 à tous les paliers : la capture est réduite, jamais recadrée.
 .media {
+  position: relative;
   order: -1;
-  display: grid;
-  place-items: center;
   aspect-ratio: 16 / 10;
-  background-color: var(--bg-alt);
   border-bottom: 1px solid var(--border);
 
-  @include from($bp-desktop) {
-    aspect-ratio: auto; // la hauteur suit le texte
+  // L'image remplit le cadre, quelle que soit sa hauteur finale
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  // Sur desktop, le cadre reste en 16/10, centré verticalement à côté du texte
+  @include from($bp-desktop) {
+    align-self: center;
     border-bottom: 0;
   }
 }
 
-// Numéro provisoire, en attendant les captures (tâche 9)
+// Numéro du projet, en pastille en bas de la capture
 .number {
+  position: absolute;
+  bottom: var(--space-3);
+  left: var(--space-3);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-card);
   color: var(--accent);
   font-family: var(--font-serif-condensed);
   font-stretch: var(--serif-width);
-  font-size: clamp(4rem, 10vw, 7rem);
-  font-weight: 500;
-  line-height: 1;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 .body {
   display: grid;
+  align-content: center; // texte centré verticalement à côté de l'image
   gap: var(--space-3);
   padding: var(--space-4);
 

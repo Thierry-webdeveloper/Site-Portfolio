@@ -6,6 +6,8 @@ projet: 7
 ordre: 1
 filtres: ["React", "Sass"]
 depot: "https://github.com/Thierry-webdeveloper/Site-Kasa"
+image: "../../assets/projets/kasa-accueil.webp"
+imageAlt: "Page d'accueil de Kasa : bannière « Chez vous, partout et ailleurs » et premières cartes de logements"
 ---
 
 ## Contexte

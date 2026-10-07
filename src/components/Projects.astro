@@ -1,11 +1,40 @@
 ---
 // Section « Projets » : lit la collection et passe des données simples à la galerie React.
 import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
 import ProjectGallery from "./ProjectGallery.jsx";
 
-const projets = (await getCollection("projets"))
-  .sort((a, b) => a.data.ordre - b.data.ordre)
-  .map((projet) => ({ id: projet.id, ...projet.data }));
+// Largeur d'affichage de l'image : moitié de carte sur desktop, carte entière sinon
+const sizes = "(min-width: 1024px) 45vw, 92vw";
+
+const fiches = (await getCollection("projets")).sort(
+  (a, b) => a.data.ordre - b.data.ordre,
+);
+
+// getImage() prépare au build les versions WebP de chaque capture.
+// React reçoit seulement des chaînes et des nombres, qu'il sait écrire dans la page.
+const projets = await Promise.all(
+  fiches.map(async ({ id, data }) => {
+    const { image, imageAlt, ...reste } = data;
+    const optimisee = await getImage({
+      src: image,
+      widths: [400, 800, 1200, 1600, 2000],
+      sizes,
+      format: "webp",
+    });
+    return {
+      id,
+      ...reste,
+      image: {
+        src: optimisee.src,
+        srcset: optimisee.srcSet.attribute,
+        sizes,
+        width: image.width,
+        height: image.height,
+      },
+    };
+  }),
+);
 ---
 
 <section id="projets" aria-labelledby="projets-titre">

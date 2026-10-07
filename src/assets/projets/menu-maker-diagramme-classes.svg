@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="1296" viewBox="0 0 780 1296" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Diagramme de classes de Menu Maker</title>
+<desc id="d">Un restaurateur possède un restaurant et est lié à plusieurs e-mails secondaires ; un restaurant a créé plusieurs menus ; chaque menu contient des catégories, qui contiennent des plats.</desc>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<line x1="550.0" y1="136" x2="550.0" y2="234" stroke="#0f172a" stroke-width="2"/>
+<polyline points="542.0,222 550.0,234 558.0,222" fill="none" stroke="#0f172a" stroke-width="2"/>
+<text x="564.0" y="158" font-size="17" font-weight="700" fill="#0f172a">1</text>
+<text x="564.0" y="226" font-size="17" font-weight="700" fill="#0f172a">1</text>
+<text x="536.0" y="192.0" text-anchor="end" font-size="17" font-style="italic" fill="#334155">possède</text>
+<line x1="550.0" y1="444" x2="550.0" y2="542" stroke="#0f172a" stroke-width="2"/>
+<polyline points="542.0,530 550.0,542 558.0,530" fill="none" stroke="#0f172a" stroke-width="2"/>
+<text x="564.0" y="466" font-size="17" font-weight="700" fill="#0f172a">1</text>
+<text x="564.0" y="534" font-size="17" font-weight="700" fill="#0f172a">*</text>
+<text x="536.0" y="500.0" text-anchor="end" font-size="17" font-style="italic" fill="#334155">a créé</text>
+<line x1="550.0" y1="752" x2="550.0" y2="850" stroke="#0f172a" stroke-width="2"/>
+<polyline points="542.0,838 550.0,850 558.0,838" fill="none" stroke="#0f172a" stroke-width="2"/>
+<text x="564.0" y="774" font-size="17" font-weight="700" fill="#0f172a">1</text>
+<text x="564.0" y="842" font-size="17" font-weight="700" fill="#0f172a">*</text>
+<text x="536.0" y="808.0" text-anchor="end" font-size="17" font-style="italic" fill="#334155">contient</text>
+<line x1="550.0" y1="976" x2="550.0" y2="1074" stroke="#0f172a" stroke-width="2"/>
+<polyline points="542.0,1062 550.0,1074 558.0,1062" fill="none" stroke="#0f172a" stroke-width="2"/>
+<text x="564.0" y="998" font-size="17" font-weight="700" fill="#0f172a">1</text>
+<text x="564.0" y="1066" font-size="17" font-weight="700" fill="#0f172a">*</text>
+<text x="536.0" y="1032.0" text-anchor="end" font-size="17" font-style="italic" fill="#334155">contient</text>
+<line x1="380" y1="112" x2="262" y2="112" stroke="#0f172a" stroke-width="2"/>
+<polyline points="274,104 262,112 274,120" fill="none" stroke="#0f172a" stroke-width="2"/>
+<text x="370" y="102" text-anchor="end" font-size="17" font-weight="700" fill="#0f172a">1</text>
+<text x="272" y="100" font-size="17" font-weight="700" fill="#0f172a">*</text>
+<text x="320.0" y="138" text-anchor="middle" font-size="17" font-style="italic" fill="#334155">lie</text>
+<g><rect x="380" y="40" width="340" height="96" rx="8" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+<path d="M380 84 V48 a8 8 0 0 1 8 -8 H712 a8 8 0 0 1 8 8 V84 Z" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+<text x="550.0" y="69" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">Restaurateur</text>
+<text x="402" y="116" font-size="17" fill="#0f172a">+ emailPrincipal</text>
+</g>
+<g><rect x="20" y="40" width="240" height="96" rx="8" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+<path d="M20 84 V48 a8 8 0 0 1 8 -8 H252 a8 8 0 0 1 8 8 V84 Z" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+<text x="140.0" y="69" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">EmailSecondaire</text>
+<text x="42" y="116" font-size="17" fill="#0f172a">+ adresse</text>
+</g>
+<g><rect x="380" y="236" width="340" height="208" rx="8" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+<path d="M380 280 V244 a8 8 0 0 1 8 -8 H712 a8 8 0 0 1 8 8 V280 Z" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+<text x="550.0" y="265" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">Restaurant</text>
+<text x="402" y="312" font-size="17" fill="#0f172a">+ nom</text>
+<text x="402" y="340" font-size="17" fill="#0f172a">+ urlLogo</text>
+<text x="402" y="368" font-size="17" fill="#0f172a">+ couleursDeBase</text>
+<text x="402" y="396" font-size="17" fill="#0f172a">+ urlDeliveroo</text>
+<text x="402" y="424" font-size="17" fill="#0f172a">+ urlInstagram</text>
+</g>
+<g><rect x="380" y="544" width="340" height="208" rx="8" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+<path d="M380 588 V552 a8 8 0 0 1 8 -8 H712 a8 8 0 0 1 8 8 V588 Z" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+<text x="550.0" y="573" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">Menu</text>
+<text x="402" y="620" font-size="17" fill="#0f172a">+ titre</text>
+<text x="402" y="648" font-size="17" fill="#0f172a">+ typographie</text>
+<text x="402" y="676" font-size="17" fill="#0f172a">+ couleurTexte</text>
+<text x="402" y="704" font-size="17" fill="#0f172a">+ miseEnPage</text>
+<text x="402" y="732" font-size="17" fill="#0f172a">+ dateCreation</text>
+</g>
+<g><rect x="380" y="852" width="340" height="124" rx="8" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+<path d="M380 896 V860 a8 8 0 0 1 8 -8 H712 a8 8 0 0 1 8 8 V896 Z" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+<text x="550.0" y="881" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">Catégorie</text>
+<text x="402" y="928" font-size="17" fill="#0f172a">+ nom</text>
+<text x="402" y="956" font-size="17" fill="#0f172a">+ ordre</text>
+</g>
+<g><rect x="380" y="1076" width="340" height="180" rx="8" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+<path d="M380 1120 V1084 a8 8 0 0 1 8 -8 H712 a8 8 0 0 1 8 8 V1120 Z" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+<text x="550.0" y="1105" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">Plat</text>
+<text x="402" y="1152" font-size="17" fill="#0f172a">+ nom</text>
+<text x="402" y="1180" font-size="17" fill="#0f172a">+ description</text>
+<text x="402" y="1208" font-size="17" fill="#0f172a">+ prix</text>
+<text x="402" y="1236" font-size="17" fill="#0f172a">+ urlPhoto</text>
+</g>
+</svg>

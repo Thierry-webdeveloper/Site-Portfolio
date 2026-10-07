@@ -7,6 +7,8 @@ ordre: 4
 complement: true
 filtres: ["React", "Tests"]
 depot: "https://github.com/Thierry-webdeveloper/Site-724events"
+image: "../../assets/projets/724events-accueil.webp"
+imageAlt: "Page d'accueil de 724events : menu et carrousel des événements"
 ---
 
 ## Contexte

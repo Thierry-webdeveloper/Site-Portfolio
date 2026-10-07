@@ -81,9 +81,21 @@ export default function ProjectGallery({ projets }) {
               </div>
             </div>
 
-            {/* Emplacement provisoire de la capture (tâche 9) : purement décoratif */}
-            <div className={styles.media} aria-hidden="true">
-              <span className={styles.number}>{String(projet.numero).padStart(2, "0")}</span>
+            {/* Capture décorative : le titre de la carte nomme déjà le projet */}
+            <div className={styles.media}>
+              <img
+                src={projet.image.src}
+                srcSet={projet.image.srcset}
+                sizes={projet.image.sizes}
+                width={projet.image.width}
+                height={projet.image.height}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              <span className={styles.number} aria-hidden="true">
+                {String(projet.numero).padStart(2, "0")}
+              </span>
             </div>
           </li>
         ))}

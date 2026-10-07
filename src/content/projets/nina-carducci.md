@@ -7,6 +7,8 @@ ordre: 2
 filtres: ["SEO", "Performance", "Accessibilité"]
 depot: "https://github.com/Thierry-webdeveloper/Site-NinaCarducci"
 site: "https://thierry-webdeveloper.github.io/Site-NinaCarducci/"
+image: "../../assets/projets/nina-carducci-galerie.webp"
+imageAlt: "Galerie du site de Nina Carducci : boutons de filtre par catégorie et grille de photos"
 ---
 
 ## Contexte

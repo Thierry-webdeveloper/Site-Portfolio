@@ -3,6 +3,7 @@
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ThemeIcon from "../../components/ThemeIcon.jsx";
+import { Image } from "astro:assets";
 
 // Au build : une page par fiche, triées par ordre d'affichage
 export async function getStaticPaths() {
@@ -28,7 +29,8 @@ interface Props {
 
 const { projet, precedent, suivant } = Astro.props;
 const { Content } = await render(projet);
-const { nom, titre, accroche, filtres, depot, site, kanban } = projet.data;
+const { nom, titre, accroche, filtres, depot, site, kanban, image, imageAlt } =
+  projet.data;
 ---
 
 <BaseLayout
@@ -45,6 +47,16 @@ const { nom, titre, accroche, filtres, depot, site, kanban } = projet.data;
       <h1>{titre}</h1>
       <p class="project__accroche">{accroche}</p>
     </header>
+
+    <Image
+      class="project__cover"
+      src={image}
+      alt={imageAlt}
+      widths={[400, 800, 1200, 1600, 2000]}
+      sizes="(min-width: 1024px) 64rem, 92vw"
+      loading="eager"
+      fetchpriority="high"
+    />
 
     <div class="project__layout">
       <aside class="project__aside" aria-labelledby="en-bref">
@@ -176,6 +188,20 @@ const { nom, titre, accroche, filtres, depot, site, kanban } = projet.data;
     font-stretch: var(--serif-width);
     font-size: clamp(1.1rem, 2vw, 1.4rem);
     font-style: italic;
+  }
+
+  // Capture principale : cadre 16/10, largeur limitée pour rester lisible
+  .project__cover {
+    display: block;
+    width: 100%;
+    max-width: 64rem;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    margin-bottom: var(--space-6);
+    object-fit: cover;
+    object-position: top;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
   }
 
   // « En bref » au-dessus du texte, puis à droite et collant sur desktop
