@@ -48,7 +48,9 @@ export default function ProjectGallery({ projets }) {
             <div className={styles.body}>
               <p className={styles.meta}>
                 Projet {projet.projet}
-                {projet.complement && " · en complément"}
+                {projet.complement && (
+                  <span className={styles.complement}> (présenté en complément)</span>
+                )}
               </p>
               <h3 className={styles.title}>{projet.titre}</h3>
               <p className={styles.accroche}>{projet.accroche}</p>

@@ -156,6 +156,13 @@
   text-transform: uppercase;
 }
 
+// Précision en retrait : ni majuscules ni espacement des lettres, en italique
+.complement {
+  font-style: italic;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
 .title {
   font-family: var(--font-serif-condensed);
   font-stretch: var(--serif-width);
