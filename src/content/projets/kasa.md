@@ -6,6 +6,7 @@ projet: 7
 ordre: 1
 filtres: ["React", "Sass"]
 depot: "https://github.com/Thierry-webdeveloper/Site-Kasa"
+site: "https://thierry-webdeveloper.github.io/Site-Kasa/"
 image: "../../assets/projets/kasa-accueil.webp"
 imageAlt: "Page d'accueil de Kasa : bannière « Chez vous, partout et ailleurs » et premières cartes de logements"
 ---
@@ -46,9 +47,9 @@ _La page d'un logement : le carrousel et les deux menus déroulants ouverts._
 
 ## Perspectives d'amélioration
 
-Elles reprennent les axes de l'évaluateur :
+Elles reprennent les axes de l'évaluateur. Depuis la soutenance :
 
-- renforcer l'accessibilité, avec des attributs ARIA et la navigation au clavier du carrousel ;
-- factoriser la logique d'état dans des hooks personnalisés.
+- l'application est en ligne sur GitHub Pages, avec un déploiement automatique à chaque publication ;
+- l'accessibilité est renforcée : carrousel navigable au clavier, boutons nommés, changement de photo annoncé aux lecteurs d'écran, menus déroulants reliés à leur contenu.
 
-La mise en ligne de l'application est prévue.
+Reste à factoriser la logique d'état dans des hooks personnalisés.
