@@ -7,12 +7,47 @@ import Journey from "../components/Journey.astro";
 import Contact from "../components/Contact.astro";
 import Projects from "../components/Projects.astro";
 import Testimonials from "../components/Testimonials.astro";
+import portrait from "../assets/portrait.webp";
+
+// Données structurées (schema.org) : décrivent la personne aux moteurs de recherche
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Thierry Pollastri",
+  jobTitle: "Intégrateur web front-end",
+  url: new URL("/", Astro.site).href,
+  image: new URL(portrait.src, Astro.site).href,
+  email: "mailto:contact@pollastri.fr",
+  address: {
+    "@type": "PostalAddress",
+    addressRegion: "Var",
+    addressCountry: "FR",
+  },
+  knowsAbout: [
+    "HTML",
+    "CSS",
+    "Sass",
+    "JavaScript",
+    "React",
+    "Redux",
+    "Astro",
+    "Accessibilité web",
+    "Référencement naturel (SEO)",
+  ],
+  sameAs: ["https://github.com/Thierry-webdeveloper"],
+};
 ---
 
 <BaseLayout
   title="Thierry Pollastri – Intégrateur web front-end | Portfolio"
   description="Thierry Pollastri, intégrateur web front-end : React, HTML/CSS, accessibilité, SEO. Projets web, sites et applications sur mesure, en local ou à distance."
 >
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(person)}
+  />
+
   <Hero />
   <About />
   <Skills />
