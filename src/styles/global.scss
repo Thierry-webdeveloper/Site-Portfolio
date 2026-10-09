@@ -25,6 +25,8 @@ html {
 }
 
 body {
+  display: flex; // mobile et tablette : pied de page en bas d'une page courte
+  flex-direction: column;
   min-height: 100vh;
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -34,6 +36,10 @@ body {
   transition:
     background-color var(--duration-base) ease,
     color var(--duration-base) ease;
+}
+
+main {
+  flex-grow: 1; // le contenu prend l'espace libre (sans effet dans la grille desktop)
 }
 
 // Desktop : barre latérale à gauche, contenu à droite
