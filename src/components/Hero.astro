@@ -38,7 +38,9 @@ import portrait from "../assets/portrait.webp";
     </p>
   </div>
 
-  <a href="#projets" class="hero__arrow" aria-label="Voir les projets">
+  <a href="#projets" class="hero__arrow">
+    <!-- Bulle au survol et au focus ; son texte est aussi le nom du lien -->
+    <span class="hero__tooltip">Voir mes projets</span>
     <svg
       viewBox="0 0 80 24"
       width="60"
@@ -151,6 +153,7 @@ import portrait from "../assets/portrait.webp";
 
   // Flèche vers les projets
   .hero__arrow {
+    position: relative; // repère de la bulle
     display: flex;
     align-self: flex-end;
     align-items: center;
@@ -177,6 +180,50 @@ import portrait from "../assets/portrait.webp";
         transform: translateX(15px);
       }
     }
+  }
+
+  // Bulle « Voir mes projets » : au-dessus de la flèche, alignée à droite
+  .hero__tooltip {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + var(--space-2));
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    font-size: 0.9rem;
+    font-style: italic;
+    white-space: nowrap;
+    pointer-events: none;
+    // Masquée visuellement mais toujours lue : elle donne son nom au lien
+    opacity: 0;
+    transform: translateY(4px);
+    transition:
+      opacity var(--duration-base) ease,
+      transform var(--duration-base) ease;
+
+    // Petite pointe vers la flèche
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      right: var(--space-5);
+      border: 6px solid transparent;
+      border-top-color: var(--text-color);
+    }
+  }
+
+  // Survol réservé aux appareils à souris ; focus clavier partout
+  @media (hover: hover) {
+    .hero__arrow:hover .hero__tooltip {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .hero__arrow:focus-visible .hero__tooltip {
+    opacity: 1;
+    transform: none;
   }
 
   // --- Desktop : composition en grille de la maquette ---
