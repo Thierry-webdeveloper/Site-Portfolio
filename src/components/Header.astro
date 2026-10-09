@@ -336,12 +336,26 @@ const liens = [
     }
   }
 
-  // Menu : replié par défaut, déplié quand le bouton est « développé »
+  // Menu : replié par défaut, déplié quand le bouton est « développé ».
+  // Panneau à droite, sous l'en-tête, qui recouvre la page sans la décaler.
   .site-nav {
     display: none;
-    flex-basis: 100%; // occupe toute la largeur, sous la première ligne
-    max-height: calc(100dvh - var(--header-height));
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: max-content; // largeur de l'élément le plus long
+    max-width: 100%;
+    max-height: calc(
+      100dvh - var(--header-height)
+    ); // sécurité : défile si l'écran est trop bas
     overflow-y: auto;
+    padding: var(--space-3) var(--page-inline) 0 var(--space-5);
+    border: 1px solid var(--border); // détache le panneau, surtout en thème sombre
+    border-top: none;
+    border-right: none;
+    border-bottom-left-radius: var(--radius-sm);
+    background-color: var(--bg-color);
+    box-shadow: -8px 0 24px -12px rgba(0, 0, 0, 0.35);
 
     ul {
       padding: 0;
@@ -398,12 +412,19 @@ const liens = [
 
     .site-nav {
       display: flex;
+      position: static;
       flex: 1;
       align-items: center;
       justify-content: space-between;
-      flex-basis: auto;
+      width: auto;
+      max-width: none;
       max-height: none;
       overflow: visible;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      box-shadow: none;
 
       ul {
         display: flex;
