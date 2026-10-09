@@ -1,0 +1,82 @@
+---
+// Page 404 : servie par l'hébergeur pour toute adresse inconnue.
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page introuvable — Thierry Pollastri"
+  description="La page demandée n'existe pas ou a été déplacée."
+>
+  <article class="not-found">
+    <h1>Page introuvable</h1>
+    <p>La page que vous cherchez n'existe pas ou a été déplacée.</p>
+
+    <ul class="not-found__actions" role="list">
+      <li><a class="not-found__primary" href="/">Retour à l'accueil</a></li>
+      <li>
+        <a class="not-found__secondary" href="/#projets">Voir les projets</a>
+      </li>
+    </ul>
+  </article>
+</BaseLayout>
+
+<style lang="scss">
+  .not-found {
+    padding: var(--space-8) var(--page-inline);
+
+    // Titre de page : même style que les mentions légales
+    h1 {
+      margin-bottom: var(--space-4);
+      font-family: var(--font-serif-condensed);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-stretch: var(--serif-width);
+      font-weight: 500;
+    }
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  // Mêmes boutons que la galerie des projets
+  .not-found__primary,
+  .not-found__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--btn-border);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      background-color var(--duration-fast),
+      color var(--duration-fast);
+  }
+
+  .not-found__primary {
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-hover-text);
+
+    &:hover {
+      background-color: transparent;
+      color: var(--text-color);
+    }
+  }
+
+  .not-found__secondary {
+    background-color: transparent;
+    color: var(--text-color);
+
+    &:hover {
+      background-color: var(--btn-hover-bg);
+      color: var(--btn-hover-text);
+    }
+  }
+</style>
