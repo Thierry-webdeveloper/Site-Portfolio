@@ -1,54 +1,146 @@
 ---
 // Page 404 : servie par l'hébergeur pour toute adresse inconnue.
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import sherlock from "../assets/404-sherlock.webp";
 ---
 
 <BaseLayout
-  title="Page introuvable — Thierry Pollastri"
-  description="La page demandée n'existe pas ou a été déplacée."
+  title="404 — L’Affaire de la page disparue | Thierry Pollastri"
+  description="La page demandée n’existe pas ou a été déplacée."
 >
   <article class="not-found">
-    <h1>Page introuvable</h1>
-    <p>La page que vous cherchez n'existe pas ou a été déplacée.</p>
+    <h1>404 — L’Affaire de la page disparue</h1>
+
+    <p class="not-found__quote">
+      «&nbsp;Lorsque vous avez éliminé l’impossible, ce qui reste, même
+      improbable, doit être la vérité.&nbsp;»
+    </p>
+
+    <Image
+      class="not-found__img"
+      src={sherlock}
+      alt="Illustration Sherlock Holmes 404"
+      widths={[320, 640, 960]}
+      sizes="320px"
+    />
+
+    <p>
+      La vérité, c’est que cette URL n’existe pas. Mauvais chemin de fichier ou
+      faute de frappe dans l’adresse&nbsp;? Mon flair me dit que le coupable se
+      trouve entre le clavier et la chaise.
+    </p>
 
     <ul class="not-found__actions" role="list">
-      <li><a class="not-found__primary" href="/">Retour à l'accueil</a></li>
       <li>
-        <a class="not-found__secondary" href="/#projets">Voir les projets</a>
+        <a class="not-found__primary" href="/">
+          <!-- Pipe (dessin maison, style Feather) -->
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <g transform="rotate(-45 12 12)">
+              <path d="M11 8H3v5a4 4 0 0 0 8 0z"></path>
+              <path d="M11 13h3.5c3 0 5 1.5 6.5 4"></path>
+            </g>
+          </svg>
+          Retourner au 221B Baker Street
+        </a>
+      </li>
+      <li>
+        <a class="not-found__secondary" href="/#projets">
+          <!-- Loupe (Feather Icons « search », MIT) -->
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          Inspecter mes dernières enquêtes
+        </a>
       </li>
     </ul>
   </article>
 </BaseLayout>
 
 <style lang="scss">
+  // Le contenu principal devient flexible : la page 404 se centre verticalement
+  :global(#contenu:has(.not-found)) {
+    display: flex;
+  }
+
   .not-found {
-    padding: var(--space-8) var(--page-inline);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    max-width: calc(48rem + 2 * var(--page-gutter));
+    margin: auto;
+    padding: var(--space-6) var(--page-gutter);
+    text-align: center;
 
     // Titre de page : même style que les mentions légales
     h1 {
-      margin-bottom: var(--space-4);
       font-family: var(--font-serif-condensed);
       font-size: clamp(2.2rem, 4vw, 3.2rem);
       font-stretch: var(--serif-width);
       font-weight: 500;
     }
+
+    p {
+      max-width: 36rem;
+    }
+  }
+
+  .not-found__quote {
+    font-family: var(--font-serif-condensed);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  // Illustration : taille, ombre et coins arrondis de la maquette
+  .not-found__img {
+    width: min(320px, 100%);
+    height: auto;
+    border-radius: var(--radius-sm);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
   }
 
   .not-found__actions {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-2);
-    margin-top: var(--space-5);
+    margin-top: var(--space-2);
     padding: 0;
     list-style: none;
   }
 
-  // Mêmes boutons que la galerie des projets
+  // Mêmes boutons que la galerie des projets, avec une icône
   .not-found__primary,
   .not-found__secondary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: var(--space-2);
     min-height: 44px;
     padding: var(--space-2) var(--space-4);
     border: 1px solid var(--btn-border);
@@ -58,6 +150,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     transition:
       background-color var(--duration-fast),
       color var(--duration-fast);
+
+    svg {
+      flex-shrink: 0;
+    }
   }
 
   .not-found__primary {
