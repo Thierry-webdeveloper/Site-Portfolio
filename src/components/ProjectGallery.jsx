@@ -65,7 +65,7 @@ export default function ProjectGallery({ projets }) {
               </ul>
 
               <div className={styles.actions}>
-                <a className={styles.primary} href={`/projets/${projet.id}`}>
+                <a className={styles.primary} href={`/projets/${projet.id}/`}>
                   Détails du projet
                   <span className="visually-hidden"> {projet.nom}</span>
                 </a>

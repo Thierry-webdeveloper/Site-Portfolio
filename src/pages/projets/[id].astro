@@ -122,7 +122,7 @@ const { nom, titre, accroche, filtres, depot, site, kanban, image, imageAlt } =
     <nav class="project__pager" aria-label="Autres projets">
       {
         precedent && (
-          <a href={`/projets/${precedent.id}`} rel="prev">
+          <a href={`/projets/${precedent.id}/`} rel="prev">
             <span aria-hidden="true">←</span>
             <span class="project__label">
               <span class="visually-hidden">Projet précédent : </span>
@@ -133,7 +133,7 @@ const { nom, titre, accroche, filtres, depot, site, kanban, image, imageAlt } =
       }
       {
         suivant && (
-          <a href={`/projets/${suivant.id}`} rel="next">
+          <a href={`/projets/${suivant.id}/`} rel="next">
             <span class="project__label">
               <span class="visually-hidden">Projet suivant : </span>
               {suivant.data.nom}
