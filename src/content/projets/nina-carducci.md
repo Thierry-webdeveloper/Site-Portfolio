@@ -45,7 +45,20 @@ Nina Carducci, photographe à Bordeaux, avait un site lent, peu accessible et ma
 | Affichage du contenu principal | 16,4 s | 1,3 s          |
 | Poids des images               | 30 Mo  | 1,2 Mo (−96 %) |
 
-![Scores Lighthouse avant optimisation : performance 74, accessibilité 68, bonnes pratiques 100, SEO 73](../../assets/projets/nina-carducci-lighthouse-avant.webp) ![Scores Lighthouse après optimisation : performance 97, accessibilité 100, bonnes pratiques 96, SEO 100](../../assets/projets/nina-carducci-lighthouse-apres.webp)
+<div class="avant-apres">
+<figure>
+<figcaption>Avant</figcaption>
+
+![Scores Lighthouse avant optimisation : performance 74, accessibilité 68, bonnes pratiques 100, SEO 73](../../assets/projets/nina-carducci-lighthouse-avant.webp)
+
+</figure>
+<figure>
+<figcaption>Après</figcaption>
+
+![Scores Lighthouse après optimisation : performance 97, accessibilité 100, bonnes pratiques 96, SEO 100](../../assets/projets/nina-carducci-lighthouse-apres.webp)
+
+</figure>
+</div>
 
 _Lighthouse, mode desktop : avant (serveur local) et après (site en ligne)._
 

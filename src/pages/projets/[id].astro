@@ -368,16 +368,34 @@ const { nom, titre, accroche, filtres, depot, site, kanban, image, imageAlt } =
       box-shadow: var(--shadow-card);
     }
 
-    :global(p:has(> img + img)) {
-      gap: var(--space-2);
+    // Paire avant / après : deux figures légendées, côte à côte si la place le permet
+    :global(.avant-apres) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
     }
 
-    :global(p:has(> img + img) img) {
-      flex-shrink: 0; // la largeur suit la hauteur : jamais d'image écrasée
-      height: 4.5rem;
+    :global(.avant-apres figure) {
+      margin: 0;
+    }
+
+    :global(.avant-apres figcaption) {
+      margin-bottom: var(--space-1);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    :global(.avant-apres p) {
+      margin-top: 0;
+    }
+
+    :global(.avant-apres img) {
+      height: 4.5rem; // même hauteur pour les deux jauges
     }
 
     // Légende : le paragraphe qui suit les images
+    :global(.avant-apres + p),
     :global(p:has(> img) + p) {
       margin-top: var(--space-2);
       color: var(--text-muted);
