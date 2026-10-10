@@ -20,6 +20,11 @@ export default function ProjectGallery({ projets }) {
       ? numerotes
       : numerotes.filter((projet) => projet.filtres.includes(actif));
 
+  // Phrase complète en une seule chaîne : un seul nœud de texte,
+  // lu d'un trait par les lecteurs d'écran
+  const pluriel = visibles.length > 1 ? "s" : "";
+  const resultat = `${visibles.length} projet${pluriel} affiché${pluriel}`;
+
   return (
     <>
       <div className={styles.filters} role="group" aria-label="Filtrer les projets par thème">
@@ -39,7 +44,7 @@ export default function ProjectGallery({ projets }) {
 
       {/* Annonce le résultat aux lecteurs d'écran après chaque clic */}
       <p className={styles.status} aria-live="polite">
-        {visibles.length} projet{visibles.length > 1 && "s"} affiché{visibles.length > 1 && "s"}
+        {resultat}
       </p>
 
       <ol className={styles.list} role="list">
