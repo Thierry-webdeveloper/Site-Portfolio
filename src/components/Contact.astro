@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 // Section « Contact » : lien direct vers l'adresse e-mail et les profils.
 import SocialLinks from "./SocialLinks.astro";
+import logo from "../assets/logo.png";
 
 const email = "contact@pollastri.fr";
 ---
@@ -35,6 +37,15 @@ const email = "contact@pollastri.fr";
   </a>
 
   <SocialLinks />
+
+  <!-- Logo décoratif, affiché seulement sur desktop -->
+  <Image
+    class="contact__logo"
+    src={logo}
+    alt=""
+    widths={[300, 460, 600, 920]}
+    sizes="(min-width: 1840px) 460px, (min-width: 1200px) 25vw, 300px"
+  />
 </section>
 
 <style lang="scss">
@@ -71,6 +82,41 @@ const email = "contact@pollastri.fr";
 
     @include from($bp-tablet) {
       display: inline-flex;
+    }
+  }
+
+  // Logo : masqué sur mobile et tablette (non téléchargé, chargement différé)
+  .contact__logo {
+    display: none;
+  }
+
+  // --- Desktop : texte à gauche, logo centré dans l'espace de droite ---
+  @include from($bp-desktop) {
+    .contact {
+      display: grid;
+      grid-template-columns: fit-content(
+          32rem
+        ) 1fr; // colonne du texte : 32rem au plus
+      column-gap: 0; // le logo se centre dans tout l’espace libre
+    }
+
+    // Le bouton garde sa taille naturelle dans la grille
+    .contact__email {
+      justify-self: start;
+      align-self: start; // ne s'étire pas en hauteur si le logo est plus haut que le texte
+    }
+
+    .contact__logo {
+      display: block;
+      grid-column: 2; // placé en premier : les autres éléments remplissent la colonne 1
+      grid-row: 1 / span 4; // toute la hauteur du contenu (titre, phrase, bouton, logos)
+      align-self: center;
+      justify-self: center;
+      width: min(
+        clamp(300px, 25vw, 460px),
+        100%
+      ); // mini, préférée, maxi ; jamais plus large que la colonne
+      height: auto;
     }
   }
 </style>
