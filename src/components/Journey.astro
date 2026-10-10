@@ -1,5 +1,5 @@
 ---
-// Section « Parcours » : frise verticale, du plus ancien au projet à venir.
+// Section « Parcours » : frise verticale sur mobile et tablette, horizontale sur desktop, du plus ancien au projet à venir.
 const etapes = [
   {
     periode: "1985 – 1989",
@@ -42,6 +42,8 @@ const etapes = [
 </section>
 
 <style lang="scss">
+  @use "../styles/variables" as *;
+
   .timeline {
     max-width: var(--measure);
     padding: 0;
@@ -91,5 +93,35 @@ const etapes = [
     color: var(--text-muted);
     font-size: 0.85rem;
     font-weight: 700;
+  }
+
+  // --- Desktop et écran large : frise horizontale ---
+  @include from($bp-desktop) {
+    .timeline {
+      --timeline-gap: var(--space-4);
+
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr)); // une colonne par étape
+      gap: var(--timeline-gap);
+      max-width: none;
+    }
+
+    .timeline__item {
+      padding: var(--space-5) 0 0; // le point passe au-dessus du texte
+
+      &::before {
+        top: 0;
+      }
+
+      // Trait horizontal jusqu'au point de l'étape suivante
+      &:not(:last-child)::after {
+        top: 5px;
+        right: calc(-1 * var(--timeline-gap) + 4px);
+        bottom: auto;
+        left: 16px;
+        width: auto;
+        height: 2px;
+      }
+    }
   }
 </style>
