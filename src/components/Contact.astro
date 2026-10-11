@@ -43,8 +43,8 @@ const email = "contact@pollastri.fr";
     class="contact__logo"
     src={logo}
     alt=""
-    widths={[300, 460, 600, 920]}
-    sizes="(min-width: 1840px) 460px, (min-width: 1200px) 25vw, 300px"
+    widths={[180, 320, 480, 640]}
+    sizes="(min-width: 1600px) 320px, 20vw"
   />
 </section>
 
@@ -94,9 +94,9 @@ const email = "contact@pollastri.fr";
   @include from($bp-desktop) {
     .contact {
       display: grid;
-      grid-template-columns: fit-content(
-          32rem
-        ) 1fr; // colonne du texte : 32rem au plus
+      grid-template-columns:
+        fit-content(32rem)
+        1fr; // colonne du texte : 32rem au plus
       column-gap: 0; // le logo se centre dans tout l’espace libre
     }
 
@@ -113,7 +113,7 @@ const email = "contact@pollastri.fr";
       align-self: center;
       justify-self: center;
       width: min(
-        clamp(300px, 25vw, 460px),
+        clamp(180px, 20vw, 320px),
         100%
       ); // mini, préférée, maxi ; jamais plus large que la colonne
       height: auto;
