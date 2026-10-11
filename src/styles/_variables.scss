@@ -13,3 +13,7 @@ $bp-wide: 1280px;
     @content;
   }
 }
+
+// Filet décoratif de la section À propos (desktop uniquement)
+// true = affiché, false = masqué
+$filet-apropos: true;

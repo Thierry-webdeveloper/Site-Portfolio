@@ -53,4 +53,23 @@
       hyphens: auto;
     }
   }
+
+  @if $filet-apropos {
+    @include from($bp-desktop) {
+      .about {
+        position: relative;
+        isolation: isolate;
+      }
+
+      .about::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-color: var(--filet-color);
+        mask: url("../assets/filet-apropos.svg") center / 100% 100% no-repeat;
+        pointer-events: none;
+      }
+    }
+  }
 </style>
