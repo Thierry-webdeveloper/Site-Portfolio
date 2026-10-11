@@ -5,6 +5,10 @@ import Sidebar from "../components/Sidebar.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
+// Noto Serif Display hébergée sur le site (Fontsource) : axes largeur et graisse, droite et italique
+import "@fontsource-variable/noto-serif-display/wdth.css";
+import "@fontsource-variable/noto-serif-display/wdth-italic.css";
+
 interface Props {
   title: string;
   description: string;
@@ -62,14 +66,6 @@ const ogImage = new URL("/apercu-partage.png", Astro.site);
         document.documentElement.classList.add("dark-theme");
       }
     </script>
-
-    <!-- Noto Serif Display : axes italique, largeur et graisse -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap"
-    />
   </head>
   <body>
     <Sidebar />
