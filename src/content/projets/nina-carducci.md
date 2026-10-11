@@ -76,3 +76,14 @@ Depuis la soutenance, deux corrections ont été apportées :
 
 - proportions des images : ajout de la déclaration CSS `height: auto` au sélecteur `img` → le score `Bonnes pratiques` passe de 96 à 100.
 - ajout de l'attribut `autocomplete` au formulaire de contact.
+
+<div class="avant-apres">
+<figure>
+<figcaption>Après les corrections</figcaption>
+
+![Scores Lighthouse après les corrections : performance 99, accessibilité 100, bonnes pratiques 100, SEO 100](../../assets/projets/nina-carducci-lighthouse-corrections.png)
+
+</figure>
+</div>
+
+_Lighthouse, mode desktop, site en ligne, octobre 2026._
