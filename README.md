@@ -19,6 +19,7 @@ accessible et bien référencé, en version mobile comme sur ordinateur.
 - React (îlot interactif : filtre des projets)
 - Sass (SCSS)
 - Déploiement : GitHub Pages via GitHub Actions
+- Qualité : Lighthouse en ligne 98 à 100 en performance, 100 en accessibilité, bonnes pratiques et SEO
 
 ## 🚀 Lancer le projet
 
@@ -34,7 +35,7 @@ Prérequis : Node.js 22.12 ou plus récent.
 ## 📁 Structure
 
 ```
-public/               Fichiers copiés tels quels (favicon)
+public/               Fichiers copiés tels quels (favicon, image de partage, vérification Google)
 src/
   assets/             Images optimisées par Astro
   components/         Composants Astro et îlots React
@@ -46,18 +47,20 @@ src/
 
 ## 🔗 Liens
 
-- **Repo GitHub** : https://github.com/Thierry-webdeveloper/Site-Portfolio
-- **Site en ligne** : à venir
+- **Site en ligne** : https://thierry-webdeveloper.github.io/
+- **Repo GitHub** : https://github.com/Thierry-webdeveloper/thierry-webdeveloper.github.io
 
 ## 🚧 Statut
 
-En cours de développement.
+En ligne.
 
 ## 🙏 Crédits
 
 - Icônes d'interface : [Feather Icons](https://feathericons.com/) (licence MIT)
 - Logos GitHub et LinkedIn : [Simple Icons](https://simpleicons.org/) (licence CC0)
-- Police : [Noto Serif Display](https://fonts.google.com/noto/specimen/Noto+Serif+Display) (licence SIL Open Font License)
+- Police : [Noto Serif Display](https://fonts.google.com/noto/specimen/Noto+Serif+Display) (licence SIL Open Font License), hébergée sur le site via [Fontsource](https://fontsource.org/)
+- Illustration de la page 404 : image générée avec ChatGPT à partir d'une photographie personnelle
+- Icône smoking-pipe (page 404) : dessin original
 
 ## 👤 Auteur
 
