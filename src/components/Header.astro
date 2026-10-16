@@ -181,6 +181,10 @@ const liens = [
       }
     });
 
+    // Ferme aussi au clic sur le nom (lien vers le haut de page)
+    const brand = document.querySelector<HTMLAnchorElement>(".brand");
+    brand?.addEventListener("click", () => setMenu(false));
+
     // Referme le menu quand la fenêtre passe en version desktop
     // (1024 px : même valeur que $bp-desktop, que le script ne peut pas lire)
     const desktop = window.matchMedia("(min-width: 1024px)");
